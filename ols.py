@@ -7,8 +7,6 @@ import numpy as np
 # function to extract variable means
 dataframe = r"~/OneDrive/Documents/Python/406homework/PS3delaroca/campus.csv"
 
-print(dataframe)
-
 
 def extract_variable_means(dataset_filename: str):
     '''Calculates the mean values of the number of total campus crimes, employed
@@ -39,4 +37,5 @@ def extract_estimator_and_covariance(dataset_filename: str):
     return beta_vector
 
 
-print(extract_estimator_and_covariance(dataframe))
+# test
+# extract_estimator_and_covariance(dataframe)

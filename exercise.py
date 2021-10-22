@@ -26,12 +26,24 @@ def generate_matrix(rows, cols):
 # test
 # generate_matrix(5, 3)
 
-# 3.) 
+# 3.)
+
 
 def matrix_multiplication_loop(x, y):
     """Multiplies x and y using a manual forloop"""
+    result = []
     for i in range(len(x)):
+        row = []
         for j in range(len(y[0])):
-            for k in range(len(y)):
-                result[i][j] += x[i][k] * y[k][j]
+            product = 0
+            for k in range(len(x[i])):
+                product += x[i][k] * y[k][j]
+            row.append(product)
+        result.append(row)
     return result
+
+
+# test
+# matrix_multiplication_loop(generate_matrix(2, 3), generate_matrix(3, 2))
+
+# 4.)
