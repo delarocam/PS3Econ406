@@ -24,7 +24,7 @@ police officers, and total college enrollment'''
 # extract_variable_means(dataframe)
 
 
-def extract_estimator_and_covariance(dataset_filename: str):
+def extract_estimator(dataset_filename: str):
     """Calculates the ols estimator vector"""
     dataframe = pd.read_csv(dataset_filename)
     dataframe = dataframe.dropna(axis=0, how="any")
@@ -38,4 +38,4 @@ def extract_estimator_and_covariance(dataset_filename: str):
 
 
 # test
-# extract_estimator_and_covariance(dataframe)
+# extract_estimator(dataframe)
