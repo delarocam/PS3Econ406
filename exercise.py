@@ -1,12 +1,12 @@
 """This document is for generating matrices of various specifications"""
-import numpy as np
-
 import timeit
+import numpy as np
 # 1.)
 
 
-def generate_s_matrix(n):
-    matrix_zero = np.ones((n, n))
+def generate_s_matrix(number: int):
+    """creates an s matrix with ones around the border"""
+    matrix_zero = np.ones((number, number))
     matrix_zero[1:-1, 1:-1] = 0
     return matrix_zero
 
@@ -18,6 +18,7 @@ def generate_s_matrix(n):
 
 
 def generate_matrix(rows, cols):
+    """generates a random matrix with specified rows and columns"""
     matrix_random = np.random.rand(rows, cols)
     return matrix_random
 
@@ -28,17 +29,17 @@ def generate_matrix(rows, cols):
 # 3.)
 
 
-def matrix_multiplication_loop(x, y):
+def matrix_multiplication_loop(x_matrix, y_matrix):
     """Multiplies x and y using a manual forloop"""
     result = []
-    for i in range(len(x)):
-        row = []
-        for j in range(len(y[0])):
+    for i, row in enumerate(x_matrix):
+        row_vector = []
+        for j in range(len(y_matrix[0])):
             product = 0
-            for k in range(len(x[i])):
-                product += x[i][k] * y[k][j]
-            row.append(product)
-        result.append(row)
+            for k in range(len(row)):
+                product += x_matrix[i][k] * y_matrix[k][j]
+            row_vector.append(product)
+        result.append(row_vector)
     return result
 
 
@@ -53,16 +54,15 @@ matrix_3 = generate_matrix(100, 100)
 matrix_4 = generate_matrix(100, 100)
 
 
-def timed_multiplication_loop(x, y):
+def timed_multiplication_loop(x_matrix, y_matrix):
     '''Times how long it takes to multiply x and y.
-       10000 matrix time: [0.00027259 seconds]
-       10 matrix time: [3.70 e-06 seconds]
+       100 matrix time: [0.8300021 seconds]
+       10 matrix time: [0.000894 seconds]
     '''
     setup = "from __main__ import matrix_multiplication_loop"
-    result = matrix_multiplication_loop(x, y)
-    time = timeit.timeit(stmt=str(matrix_multiplication_loop(x, y)),
-                         setup=setup,
-                         number=1)
+    result = matrix_multiplication_loop(x_matrix, y_matrix)
+    time = timeit.timeit(stmt="matrix_multiplication_loop(x_matrix, y_matrix)",
+                         setup=setup, globals=locals(), number=1)
     print(time)
     return result
 
@@ -76,14 +76,15 @@ def timed_multiplication_loop(x, y):
 
 # 5.)
 
-def timed_multiplication_numpy(x, y):
+def timed_multiplication_numpy(x_matrix, y_matrix):
     '''Times how long it takes to multiply x and y.
-       10000 matrix time: [YOUR TIME HERE]
-       10 matrix time: [YOUR TIME HERE]
+       100 matrix time: [0.0001189999 seconds]
+       10 matrix time: [2.3099 e-05 seconds]
     '''
-    result = np.dot(x, y)
+    result = np.dot(x_matrix, y_matrix)
     setup = "import numpy as np"
-    time = timeit.timeit(stmt=str(np.dot(x, y)), setup=setup, number=1)
+    time = timeit.timeit(stmt="np.dot(x_matrix, y_matrix)",
+                         setup=setup, globals=locals(), number=1)
     print(time)
     return result
 
@@ -91,6 +92,3 @@ def timed_multiplication_numpy(x, y):
 # test
 # timed_multiplication_numpy(matrix_1, matrix_2)
 # timed_multiplication_numpy(matrix_3, matrix_4)
-
-
-print(str(np.dot(matrix_1, matrix_2)))

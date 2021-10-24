@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 # function to extract variable means
-dataframe = r"~/OneDrive/Documents/Python/406homework/PS3delaroca/campus.csv"
+DATAFRAME = r"~/OneDrive/Documents/Python/406homework/PS3delaroca/campus.csv"
 
 
 def extract_variable_means(dataset_filename: str):
@@ -21,7 +21,7 @@ police officers, and total college enrollment'''
 
 
 # test
-# extract_variable_means(dataframe)
+# extract_variable_means(DATAFRAME)
 
 
 def extract_estimator(dataset_filename: str):
@@ -38,4 +38,4 @@ def extract_estimator(dataset_filename: str):
 
 
 # test
-# extract_estimator(dataframe)
+# extract_estimator(DATAFRAME)
