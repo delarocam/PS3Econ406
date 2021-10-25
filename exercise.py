@@ -43,8 +43,12 @@ def matrix_multiplication_loop(x_matrix, y_matrix):
     return result
 
 
-# test
-# matrix_multiplication_loop(generate_matrix(2, 3), generate_matrix(3, 2))
+# test: to see if gets same result as np.dot
+
+# matrix_a = generate_matrix(2, 3)
+# matrix_b = generate_matrix(3, 2)
+# print(matrix_multiplication_loop(matrix_a, matrix_b))
+# print(np.dot(matrix_a, matrix_b))
 
 # 4.)
 

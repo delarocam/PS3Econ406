@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 # function to extract variable means
-DATAFRAME = r"~/OneDrive/Documents/Python/406homework/PS3delaroca/campus.csv"
+DATAFRAME = r"campus.csv"
 
 
 def extract_variable_means(dataset_filename: str):
